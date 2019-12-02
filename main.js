@@ -28,8 +28,29 @@ function chnageDigitToHangul(number) {
 
 function changeNumberToHangul(number) {
   let result = "";
+  let dividend = number;
+  let strTen = "십";
   if (number < 10) {
     result = chnageDigitToHangul(number);
+  } else if (number === 10) {
+    result = strTen;
+  } else if (number > 10 && number < 100) {
+    for (let index = 1; index < 9; index++) {
+      if (dividend % 10 === 0) {
+        result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
+        break;
+      }
+      if (dividend / 10 >= 1 && dividend / 10 < 2) {
+        result = strTen + chnageDigitToHangul(dividend % 10);
+        break;
+      } else {
+        result =
+          chnageDigitToHangul(parseInt(dividend / 10)) +
+          strTen +
+          chnageDigitToHangul(dividend % 10);
+        break;
+      }
+    }
   }
   return result;
 }
