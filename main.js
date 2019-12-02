@@ -31,27 +31,24 @@ function changeNumberToHangul(numberString) {
   let result = "";
   let dividend = parseInt(numberString);
   let strTen = "십";
+  let srtHundred = "백";
   if (dividend < 10) {
     result = chnageDigitToHangul(numberString);
   } else if (dividend === 10) {
     result = strTen;
   } else if (dividend > 10 && dividend < 100) {
-    for (let index = 1; index < 9; index++) {
-      if (dividend % 10 === 0) {
-        result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
-        break;
-      }
-      if (dividend / 10 >= 1 && dividend / 10 < 2) {
-        result = strTen + chnageDigitToHangul(dividend % 10);
-        break;
-      } else {
-        result =
-          chnageDigitToHangul(parseInt(dividend / 10)) +
-          strTen +
-          chnageDigitToHangul(dividend % 10);
-        break;
-      }
+    if (dividend % 10 === 0) {
+      result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
+    } else if (dividend / 10 >= 1 && dividend / 10 < 2) {
+      result = strTen + chnageDigitToHangul(dividend % 10);
+    } else {
+      result =
+        chnageDigitToHangul(parseInt(dividend / 10)) +
+        strTen +
+        chnageDigitToHangul(dividend % 10);
     }
+  } else if (dividend === 100) {
+    result = srtHundred;
   }
   return result;
 }
