@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>금액을 한글로 변환</title>
+    <style>
+      .moneyPannel {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>금액 한글 변환기</h1>
+    </div>
+    <p>
+      <input
+        type="text"
+        id="input"
+        class="moneyPannel"
+        placeholder="금액을 숫자로 입력하세요."
+      />&nbsp;원&nbsp;&nbsp;
+      <button type="button" id="changeHangulBtn">한글 변환</button>
+      <br />
+      <br />
+      <input
+        type="text"
+        id="output"
+        class="moneyPannel"
+        placeholder="입력한 금액을 한글로 표시합니다."
+        readonly="true"
+      />&nbsp;원
+    </p>
+  </body>
+</html>
