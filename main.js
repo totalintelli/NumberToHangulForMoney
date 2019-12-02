@@ -2,7 +2,8 @@ function changeHangul() {
   alert("changeHangul!!");
 }
 
-function chnageDigitToHangul(number) {
+function chnageDigitToHangul(numberString) {
+  let number = parseInt(numberString);
   if (number === 0) {
     return "영";
   } else if (number === 1) {
@@ -26,15 +27,15 @@ function chnageDigitToHangul(number) {
   }
 }
 
-function changeNumberToHangul(number) {
+function changeNumberToHangul(numberString) {
   let result = "";
-  let dividend = number;
+  let dividend = parseInt(numberString);
   let strTen = "십";
-  if (number < 10) {
-    result = chnageDigitToHangul(number);
-  } else if (number === 10) {
+  if (dividend < 10) {
+    result = chnageDigitToHangul(numberString);
+  } else if (dividend === 10) {
     result = strTen;
-  } else if (number > 10 && number < 100) {
+  } else if (dividend > 10 && dividend < 100) {
     for (let index = 1; index < 9; index++) {
       if (dividend % 10 === 0) {
         result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
