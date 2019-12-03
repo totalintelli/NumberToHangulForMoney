@@ -27,28 +27,67 @@ function chnageDigitToHangul(numberString) {
   }
 }
 
+function ConvertDecimalNumberToHangul(dividend) {
+  let strTen = "십";
+  if (dividend % 10 === 0) {
+    result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
+  } else if (dividend > 10 && dividend < 20) {
+    result = strTen + chnageDigitToHangul(dividend % 10);
+  } else {
+    result =
+      chnageDigitToHangul(parseInt(dividend / 10)) +
+      strTen +
+      chnageDigitToHangul(dividend % 10);
+  }
+  return result;
+}
+
 function changeNumberToHangul(numberString) {
   let result = "";
   let dividend = parseInt(numberString);
   let strTen = "십";
-  let srtHundred = "백";
+  let strHundred = "백";
+  let strThousand = "천";
+
   if (dividend < 10) {
     result = chnageDigitToHangul(numberString);
   } else if (dividend === 10) {
     result = strTen;
-  } else if (dividend > 10 && dividend < 100) {
-    if (dividend % 10 === 0) {
-      result = chnageDigitToHangul(parseInt(dividend / 10)) + strTen;
-    } else if (dividend / 10 >= 1 && dividend / 10 < 2) {
-      result = strTen + chnageDigitToHangul(dividend % 10);
-    } else {
-      result =
-        chnageDigitToHangul(parseInt(dividend / 10)) +
-        strTen +
-        chnageDigitToHangul(dividend % 10);
-    }
+  } else if (dividend >= 10 && dividend < 100) {
+    result = ConvertDecimalNumberToHangul(dividend);
   } else if (dividend === 100) {
-    result = srtHundred;
+    result = strHundred;
+  } else if (dividend > 100 && dividend < 1000) {
+    let secondDividend = dividend % 100;
+    let hundredDigit = parseInt(dividend / 100);
+    if (hundredDigit === 1) {
+      if (secondDividend < 10) {
+        result = strHundred + chnageDigitToHangul(secondDividend);
+      } else if (secondDividend === 10) {
+        result = strHundred + strTen;
+      } else {
+        result = strHundred + ConvertDecimalNumberToHangul(secondDividend);
+      }
+    } else {
+      if (dividend % 100 === 0) {
+        result = chnageDigitToHangul(parseInt(dividend / 100)) + strHundred;
+      } else if (secondDividend > 0 && secondDividend < 10) {
+        result =
+          chnageDigitToHangul(parseInt(dividend / 100)) +
+          strHundred +
+          chnageDigitToHangul(secondDividend % 10);
+      } else if (secondDividend === 10) {
+        result =
+          chnageDigitToHangul(parseInt(dividend / 100)) + strHundred + strTen;
+      } else {
+        result =
+          chnageDigitToHangul(parseInt(dividend / 100)) +
+          strHundred +
+          ConvertDecimalNumberToHangul(secondDividend);
+      }
+    }
+  } else if (dividend === 1000) {
+    result = strThousand;
   }
   return result;
 }
