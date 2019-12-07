@@ -13,26 +13,20 @@
     <div>
       <h1>금액 한글 변환기</h1>
     </div>
-    <p>
+    <p></p>
+    <form>
+      입력 :
       <input
         type="text"
-        id="input"
-        class="moneyPannel"
-        placeholder="금액을 숫자로 입력하세요."
-      />&nbsp;원&nbsp;&nbsp;
-      <button type="button" id="changeHangulBtn" onclick="changeHangul()">
-        한글 변환
-      </button>
+        id="txt_money"
+        maxlength="19"
+        onkeyup="changeHangulMoney(this);"
+      />원
       <br />
       <br />
-      <input
-        type="text"
-        id="output"
-        class="moneyPannel"
-        placeholder="입력한 금액을 한글로 표시합니다."
-        readonly="true"
-      />&nbsp;원
-    </p>
+      출력 :
+      <span class="han_money" id="han_money">금액 표시</span>원
+    </form>
     <script src="main.js"></script>
   </body>
 </html>

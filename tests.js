@@ -1,38 +1,10 @@
 QUnit.test("hangul change test", function(assert) {
   assert.equal(changeNumberToHangul("1"), "일");
-  assert.equal(changeNumberToHangul("2"), "이");
-  assert.equal(changeNumberToHangul("3"), "삼");
-  assert.equal(changeNumberToHangul("4"), "사");
-  assert.equal(changeNumberToHangul("5"), "오");
-  assert.equal(changeNumberToHangul("6"), "육");
-  assert.equal(changeNumberToHangul("7"), "칠");
-  assert.equal(changeNumberToHangul("8"), "팔");
-  assert.equal(changeNumberToHangul("9"), "구");
-  assert.equal(changeNumberToHangul("10"), "십");
-  assert.equal(changeNumberToHangul("11"), "십일");
-  assert.equal(changeNumberToHangul("20"), "이십");
-  assert.equal(changeNumberToHangul("21"), "이십일");
-  assert.equal(changeNumberToHangul("30"), "삼십");
-  assert.equal(changeNumberToHangul("90"), "구십");
-  assert.equal(changeNumberToHangul("99"), "구십구");
-  assert.equal(changeNumberToHangul("100"), "백");
-  assert.equal(changeNumberToHangul("101"), "백일");
-  assert.equal(changeNumberToHangul("109"), "백구");
-  assert.equal(changeNumberToHangul("110"), "백십");
-  assert.equal(changeNumberToHangul("111"), "백십일");
-  assert.equal(changeNumberToHangul("119"), "백십구");
-  assert.equal(changeNumberToHangul("120"), "백이십");
-  assert.equal(changeNumberToHangul("129"), "백이십구");
-  assert.equal(changeNumberToHangul("190"), "백구십");
-  assert.equal(changeNumberToHangul("199"), "백구십구");
-  assert.equal(changeNumberToHangul("200"), "이백");
-  assert.equal(changeNumberToHangul("201"), "이백일");
-  assert.equal(changeNumberToHangul("210"), "이백십");
-  assert.equal(changeNumberToHangul("211"), "이백십일");
-  assert.equal(changeNumberToHangul("220"), "이백이십");
-  assert.equal(changeNumberToHangul("221"), "이백이십일");
-  assert.equal(changeNumberToHangul("299"), "이백구십구");
-  assert.equal(changeNumberToHangul("300"), "삼백");
-  assert.equal(changeNumberToHangul("999"), "구백구십구");
-  assert.equal(changeNumberToHangul("1000"), "천");
+  assert.equal(changeNumberToHangul("80,270"), "팔만 이백칠십");
+  assert.equal(changeNumberToHangul("111,111"), "십일만 천백십일");
+  assert.equal(
+    changeNumberToHangul("1,234,567,890"),
+    "십이억 삼천사백오십육만 칠천팔백구십"
+  );
+  assert.equal(changeNumberToHangul("100,000,000,000,000"), "백조");
 });
